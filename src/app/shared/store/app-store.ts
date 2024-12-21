@@ -1,7 +1,24 @@
 import { ActionReducerMap } from '@ngrx/store';
+import { usersReducer, UsersState } from './users/users.reducer';
+import { UsersEffects } from './users/users.effects';
 
-export interface AppState {}
+/**
+ * In how many minutes should cache expire.
+ */
+export const storeSectionExpires = {
+  users: 15,
+};
 
-export const appReducers: ActionReducerMap<AppState> = {};
+export const storeSectionName = {
+  users: 'users',
+};
 
-export const appEffects = [];
+export interface AppState {
+  users: UsersState;
+}
+
+export const appReducers: ActionReducerMap<AppState> = {
+  users: usersReducer,
+};
+
+export const appEffects = [UsersEffects];
