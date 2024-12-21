@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppHttpService } from './app-http.service';
-import { UsersQuery } from '../../models/users/user-query.model';
+import { UsersQuery } from '../../models/users/users-query.model';
 import { User } from '../../models/users/user.model';
 import { PaginatedList } from '../../models/other/paginated-list.model';
 
