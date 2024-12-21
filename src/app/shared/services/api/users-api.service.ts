@@ -18,7 +18,7 @@ export class UsersApiService extends AppHttpService {
     return this.http.get<PaginatedList<User>>(this.url(''), { params });
   }
 
-  public deleteInvoice(id: number): Observable<number> {
+  public deleteUser(id: number): Observable<number> {
     return this.http.delete<number>(this.url(id.toString()));
   }
 }
