@@ -1,0 +1,228 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "first_name": "John",
+      "last_name": "Novak",
+      "email": "john.novak@example.com",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "first_name": "Alice",
+      "last_name": "Smith",
+      "email": "alice.smith@example.com",
+      "role": "user"
+    },
+    {
+      "id": "3",
+      "first_name": "Bob",
+      "last_name": "Johnson",
+      "email": "bob.johnson@example.com",
+      "role": "editor"
+    },
+    {
+      "id": "4",
+      "first_name": "Charlie",
+      "last_name": "Williams",
+      "email": "charlie.williams@example.com",
+      "role": "admin"
+    },
+    {
+      "id": "5",
+      "first_name": "Diana",
+      "last_name": "Brown",
+      "email": "diana.brown@example.com",
+      "role": "user"
+    },
+    {
+      "id": "6",
+      "first_name": "Eve",
+      "last_name": "Jones",
+      "email": "eve.jones@example.com",
+      "role": "editor"
+    },
+    {
+      "id": "7",
+      "first_name": "Frank",
+      "last_name": "Garcia",
+      "email": "frank.garcia@example.com",
+      "role": "user"
+    },
+    {
+      "id": "8",
+      "first_name": "Grace",
+      "last_name": "Martinez",
+      "email": "grace.martinez@example.com",
+      "role": "admin"
+    },
+    {
+      "id": "9",
+      "first_name": "Hank",
+      "last_name": "Rodriguez",
+      "email": "hank.rodriguez@example.com",
+      "role": "user"
+    },
+    {
+      "id": "10",
+      "first_name": "Ivy",
+      "last_name": "Davis",
+      "email": "ivy.davis@example.com",
+      "role": "editor"
+    },
+    {
+      "id": "11",
+      "first_name": "Jack",
+      "last_name": "Hernandez",
+      "email": "jack.hernandez@example.com",
+      "role": "admin"
+    },
+    {
+      "id": "12",
+      "first_name": "Kate",
+      "last_name": "Lopez",
+      "email": "kate.lopez@example.com",
+      "role": "user"
+    },
+    {
+      "id": "13",
+      "first_name": "Liam",
+      "last_name": "Gonzalez",
+      "email": "liam.gonzalez@example.com",
+      "role": "editor"
+    },
+    {
+      "id": "14",
+      "first_name": "Mia",
+      "last_name": "Wilson",
+      "email": "mia.wilson@example.com",
+      "role": "admin"
+    },
+    {
+      "id": "15",
+      "first_name": "Noah",
+      "last_name": "Anderson",
+      "email": "noah.anderson@example.com",
+      "role": "user"
+    },
+    {
+      "id": "16",
+      "first_name": "Olivia",
+      "last_name": "Thomas",
+      "email": "olivia.thomas@example.com",
+      "role": "editor"
+    },
+    {
+      "id": "17",
+      "first_name": "Paul",
+      "last_name": "Taylor",
+      "email": "paul.taylor@example.com",
+      "role": "admin"
+    },
+    {
+      "id": "18",
+      "first_name": "Quinn",
+      "last_name": "Moore",
+      "email": "quinn.moore@example.com",
+      "role": "user"
+    },
+    {
+      "id": "19",
+      "first_name": "Rita",
+      "last_name": "Martin",
+      "email": "rita.martin@example.com",
+      "role": "editor"
+    },
+    {
+      "id": "20",
+      "first_name": "Sam",
+      "last_name": "Lee",
+      "email": "sam.lee@example.com",
+      "role": "admin"
+    },
+    {
+      "id": "21",
+      "first_name": "Tina",
+      "last_name": "Perez",
+      "email": "tina.perez@example.com",
+      "role": "user"
+    },
+    {
+      "id": "22",
+      "first_name": "Uma",
+      "last_name": "Clark",
+      "email": "uma.clark@example.com",
+      "role": "editor"
+    },
+    {
+      "id": "23",
+      "first_name": "Victor",
+      "last_name": "Lewis",
+      "email": "victor.lewis@example.com",
+      "role": "admin"
+    },
+    {
+      "id": "24",
+      "first_name": "Wendy",
+      "last_name": "Young",
+      "email": "wendy.young@example.com",
+      "role": "user"
+    },
+    {
+      "id": "25",
+      "first_name": "Xander",
+      "last_name": "Walker",
+      "email": "xander.walker@example.com",
+      "role": "editor"
+    },
+    {
+      "id": "26",
+      "first_name": "Yara",
+      "last_name": "Hall",
+      "email": "yara.hall@example.com",
+      "role": "admin"
+    },
+    {
+      "id": "27",
+      "first_name": "Zane",
+      "last_name": "Allen",
+      "email": "zane.allen@example.com",
+      "role": "user"
+    },
+    {
+      "id": "28",
+      "first_name": "Ella",
+      "last_name": "Brooks",
+      "email": "ella.brooks@example.com",
+      "role": "editor"
+    },
+    {
+      "id": "29",
+      "first_name": "Henry",
+      "last_name": "Morgan",
+      "email": "henry.morgan@example.com",
+      "role": "admin"
+    },
+    {
+      "id": "30",
+      "first_name": "Isla",
+      "last_name": "Griffin",
+      "email": "isla.griffin@example.com",
+      "role": "user"
+    },
+    {
+      "id": "31",
+      "first_name": "Theo",
+      "last_name": "Fisher",
+      "email": "theo.fisher@example.com",
+      "role": "editor"
+    },
+    {
+      "id": "32",
+      "first_name": "Sophia",
+      "last_name": "King",
+      "email": "sophia.king@example.com",
+      "role": "admin"
+    }
+  ]
+}
