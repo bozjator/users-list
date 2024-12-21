@@ -1,1 +1,20 @@
-Users list
+<div>
+  @for(user of (users$ | async)?.data; track user.id) {
+    <div>
+      {{ user.first_name }} {{ user.last_name }}
+    </div>
+  }
+  <button (click)="goToPreviousPage()">&lt;</button>
+    {{ (usersQuery$ | async)?._page }}
+  <button (click)="goToNextPage()">&gt;</button>
+</div>
+
+<!-- Show loading indicator. -->
+@if(loadingUsers$ | async) {
+  <div>LOADING...</div>
+}
+
+<!-- Show error message. -->
+@if(errorLoadingUsers$ | async) {
+  <div>There was an error loading data.</div>
+}
