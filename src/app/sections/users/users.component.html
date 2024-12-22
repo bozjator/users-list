@@ -1,8 +1,10 @@
 <div>
   <table-users [data]="(users$ | async)?.data || []" />
-  <button (click)="goToPreviousPage()">&lt;</button>
-    {{ (usersQuery$ | async)?._page }}
-  <button (click)="goToNextPage()">&gt;</button>
+  <app-pagination
+    [currentPage]="(usersQuery$ | async)?._page || 1"
+    [lastPage]="(users$ | async)?.last || 1"
+    (onPageChange)="changePageNumber($event)"
+  />
 </div>
 
 <!-- Show loading indicator. -->

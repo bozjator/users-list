@@ -6,6 +6,7 @@ import {
   BehaviorSubject,
   filter,
   Observable,
+  shareReplay,
   switchMap,
   take,
   tap,
@@ -17,12 +18,13 @@ import { UsersActions } from '../../shared/store/users/users.actions';
 import { PaginatedList } from '../../shared/models/other/paginated-list.model';
 import { User } from '../../shared/models/users/user.model';
 import { TableUsersComponent } from './components/table-users.component';
+import { PaginationComponent } from '../../shared/components/pagination.component';
 
 @Component({
   selector: 'users',
   standalone: true,
   templateUrl: './users.component.html',
-  imports: [CommonModule, TableUsersComponent],
+  imports: [CommonModule, TableUsersComponent, PaginationComponent],
 })
 export class UsersComponent {
   usersQuery$ = new BehaviorSubject<UsersQuery>({
@@ -34,20 +36,18 @@ export class UsersComponent {
   loadingUsers$: Observable<boolean>;
   errorLoadingUsers$: Observable<HttpErrorResponse | undefined>;
 
-  users?: PaginatedList<User>;
-
   constructor(private store: Store<AppState>) {
     this.users$ = this.usersQuery$.pipe(
       switchMap((query: UsersQuery) => {
         return this.store.select(UsersSelectors.users(query)).pipe(
           tap((data) => {
             if (!data) this.store.dispatch(UsersActions.loadUsers({ query }));
-            else this.users = data;
           }),
           filter((data) => !!data),
           take(1)
         );
-      })
+      }),
+      shareReplay(1)
     );
     this.loadingUsers$ = this.store.select(UsersSelectors.loadingUsers);
     this.errorLoadingUsers$ = this.store.select(
@@ -60,20 +60,7 @@ export class UsersComponent {
     this.usersQuery$.next({ ...currentData, ...newData });
   }
 
-  private changePageNumber(pageNumber: number): void {
+  changePageNumber(pageNumber: number): void {
     this.updateUsersQuery({ _page: pageNumber });
-  }
-
-  goToPreviousPage() {
-    const currentPage = this.usersQuery$.value._page;
-    if (currentPage === 1) return;
-    this.changePageNumber(currentPage - 1);
-  }
-
-  goToNextPage() {
-    const currentPage = this.usersQuery$.value._page;
-    const lastPage = this.users?.last;
-    if (currentPage === lastPage) return;
-    this.changePageNumber(currentPage + 1);
   }
 }
