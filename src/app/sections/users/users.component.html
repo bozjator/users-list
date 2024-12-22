@@ -1,9 +1,5 @@
 <div>
-  @for(user of (users$ | async)?.data; track user.id) {
-    <div>
-      {{ user.first_name }} {{ user.last_name }}
-    </div>
-  }
+  <table-users [data]="(users$ | async)?.data || []" />
   <button (click)="goToPreviousPage()">&lt;</button>
     {{ (usersQuery$ | async)?._page }}
   <button (click)="goToNextPage()">&gt;</button>

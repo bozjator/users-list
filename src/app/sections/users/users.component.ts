@@ -16,12 +16,13 @@ import { UsersQuery } from '../../shared/models/users/users-query.model';
 import { UsersActions } from '../../shared/store/users/users.actions';
 import { PaginatedList } from '../../shared/models/other/paginated-list.model';
 import { User } from '../../shared/models/users/user.model';
+import { TableUsersComponent } from './components/table-users.component';
 
 @Component({
   selector: 'users',
   standalone: true,
   templateUrl: './users.component.html',
-  imports: [CommonModule],
+  imports: [CommonModule, TableUsersComponent],
 })
 export class UsersComponent {
   usersQuery$ = new BehaviorSubject<UsersQuery>({
