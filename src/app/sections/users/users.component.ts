@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Store } from '@ngrx/store';
@@ -26,17 +26,31 @@ import { PaginationComponent } from '../../shared/components/pagination.componen
   templateUrl: './users.component.html',
   imports: [CommonModule, TableUsersComponent, PaginationComponent],
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
   usersQuery$ = new BehaviorSubject<UsersQuery>({
     _page: 1,
     _per_page: 5,
   });
 
-  users$: Observable<PaginatedList<User>>;
-  loadingUsers$: Observable<boolean>;
-  errorLoadingUsers$: Observable<HttpErrorResponse | undefined>;
+  users$?: Observable<PaginatedList<User>>;
+  loadingUsers$?: Observable<boolean>;
+  errorLoadingUsers$?: Observable<HttpErrorResponse | undefined>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>) {}
+
+  ngOnInit(): void {
+    this.setupLoadingAndErrorObservers();
+    this.setupUsersObserver();
+  }
+
+  private setupLoadingAndErrorObservers(): void {
+    this.loadingUsers$ = this.store.select(UsersSelectors.loadingUsers);
+    this.errorLoadingUsers$ = this.store.select(
+      UsersSelectors.errorLoadingUsers
+    );
+  }
+
+  private setupUsersObserver() {
     this.users$ = this.usersQuery$.pipe(
       switchMap((query: UsersQuery) => {
         return this.store.select(UsersSelectors.users(query)).pipe(
@@ -48,10 +62,6 @@ export class UsersComponent {
         );
       }),
       shareReplay(1)
-    );
-    this.loadingUsers$ = this.store.select(UsersSelectors.loadingUsers);
-    this.errorLoadingUsers$ = this.store.select(
-      UsersSelectors.errorLoadingUsers
     );
   }
 
