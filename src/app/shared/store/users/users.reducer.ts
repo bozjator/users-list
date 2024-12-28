@@ -48,7 +48,7 @@ export const usersReducer = createReducer(
       },
       expiry: {
         ...state.expiry,
-        [queryHashKey]: expiresAt,
+        [queryHashKey]: expiresAt.getTime(),
       },
     };
   }),
