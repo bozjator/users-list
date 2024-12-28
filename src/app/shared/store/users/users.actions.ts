@@ -3,8 +3,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { UsersQuery } from '../../models/users/users-query.model';
 import { PaginatedList } from '../../models/other/paginated-list.model';
 import { User } from '../../models/users/user.model';
+import { StateClearedReason } from '../../models/other/state-clear-reason.enum';
 
-const clearState = createAction('[Users] Clear State');
+const clearState = createAction(
+  '[Users] Clear State',
+  props<{ reason: StateClearedReason }>()
+);
 
 const loadUsers = createAction(
   '[Users] Load Users',

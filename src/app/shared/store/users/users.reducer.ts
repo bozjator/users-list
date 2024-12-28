@@ -6,8 +6,11 @@ import { storeSectionExpires } from '../app-store';
 import { UsersActions } from './users.actions';
 import { PaginatedList } from '../../models/other/paginated-list.model';
 import { User } from '../../models/users/user.model';
+import { StateClearedReason } from '../../models/other/state-clear-reason.enum';
 
 export interface UsersState {
+  stateClearedReason?: StateClearedReason;
+
   expiry: { [queryHash: string]: number };
   users: { [queryHash: string]: PaginatedList<User> };
   loadingUsers: boolean;
@@ -15,6 +18,8 @@ export interface UsersState {
 }
 
 const initialState: UsersState = {
+  stateClearedReason: undefined,
+
   expiry: {},
   users: {},
   loadingUsers: false,
@@ -25,12 +30,13 @@ export const usersReducer = createReducer(
   initialState,
 
   on(UsersActions.clearState, (state, action): UsersState => {
-    return { ...initialState };
+    return { ...initialState, stateClearedReason: action.reason };
   }),
 
   on(UsersActions.loadUsers, (state, action): UsersState => {
     return {
       ...state,
+      stateClearedReason: undefined,
       loadingUsers: true,
       errorLoadingUsers: undefined,
     };
