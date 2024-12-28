@@ -8,6 +8,11 @@ import { User } from '../../models/users/user.model';
 
 const featureState = createFeatureSelector<UsersState>(storeSectionName.users);
 
+const stateClearedReason = createSelector(
+  featureState,
+  (state) => state.stateClearedReason
+);
+
 const users = (query: UsersQuery) =>
   createSelector(featureState, (state): PaginatedList<User> | undefined => {
     const hashKey = HashUtils.generateHashKey(query);
@@ -30,6 +35,7 @@ const errorLoadingUsers = createSelector(
 );
 
 const UsersSelectors = {
+  stateClearedReason,
   users,
   loadingUsers,
   errorLoadingUsers,
