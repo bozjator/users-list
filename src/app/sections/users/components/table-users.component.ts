@@ -1,7 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../shared/store/app-store';
 import { TableComponent } from '../../../shared/components/table.component';
 import { TableColumn } from '../../../shared/models/other/table-column.model';
 import { User } from '../../../shared/models/users/user.model';
+import { UserActions } from '../../../shared/store/user/user.actions';
 
 @Component({
   standalone: true,
@@ -36,8 +39,9 @@ export class TableUsersComponent {
     },
   ];
 
+  constructor(private store: Store<AppState>) {}
+
   deleteFn = (user: User) => {
-    // TODO delete user
-    console.log('delete user: ', user);
+    this.store.dispatch(UserActions.deleteUser({ id: user.id }));
   };
 }
