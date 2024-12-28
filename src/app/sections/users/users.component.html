@@ -7,12 +7,20 @@
   />
 </div>
 
-<!-- Show loading indicator. -->
+<!-- Show loading users indicator. -->
 @if(loadingUsers$ | async) {
-  <div>LOADING...</div>
+  <div>Loading users...</div>
+}
+<!-- Show message error loading user. -->
+@if(errorLoadUsers$ | async) {
+  <div>There was an error loading data.</div>
 }
 
-<!-- Show error message. -->
-@if(errorLoadingUsers$ | async) {
-  <div>There was an error loading data.</div>
+<!-- Show deleting user indicator. -->
+@if(deletingUser$ | async) {
+  <div>Deleting user...</div>
+}
+<!-- Show message error deleting user. -->
+@if(errorDeleteUser$ | async) {
+  <div>There was an error deleting user.</div>
 }

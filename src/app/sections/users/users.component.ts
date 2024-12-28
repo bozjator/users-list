@@ -16,6 +16,7 @@ import {
   tap,
 } from 'rxjs';
 import { AppState } from '../../shared/store/app-store';
+import { UserSelectors } from '../../shared/store/user/user.selectors';
 import { UsersSelectors } from '../../shared/store/users/users.selectors';
 import { UsersQuery } from '../../shared/models/users/users-query.model';
 import { UsersActions } from '../../shared/store/users/users.actions';
@@ -41,7 +42,10 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   users$?: Observable<PaginatedList<User>>;
   loadingUsers$?: Observable<boolean>;
-  errorLoadingUsers$?: Observable<HttpErrorResponse | undefined>;
+  errorLoadUsers$?: Observable<HttpErrorResponse | undefined>;
+
+  deletingUser$?: Observable<boolean>;
+  errorDeleteUser$?: Observable<HttpErrorResponse | undefined>;
 
   constructor(private store: Store<AppState>) {}
 
@@ -58,9 +62,9 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   private setupLoadingAndErrorObservers(): void {
     this.loadingUsers$ = this.store.select(UsersSelectors.loadingUsers);
-    this.errorLoadingUsers$ = this.store.select(
-      UsersSelectors.errorLoadingUsers
-    );
+    this.errorLoadUsers$ = this.store.select(UsersSelectors.errorLoadingUsers);
+    this.deletingUser$ = this.store.select(UserSelectors.deletingUser);
+    this.errorDeleteUser$ = this.store.select(UserSelectors.errorDeleteUser);
   }
 
   private setupUsersObserver() {
